@@ -14,11 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Component
 public class ItemOrderBootStrap implements CommandLineRunner {
-    public static final String TASTING_ROOM = "Grocery Store";
-    public static final String Item_1_UPC = "0631234200036";
-    public static final String Item_2_UPC = "0631234300019";
-    public static final String Item_3_UPC = "0083783375213";
-
+    public static final String GROCERY_STORE = "Grocery Store";
     private final CustomerRepository customerRepository;
 
     @Override
@@ -29,7 +25,7 @@ public class ItemOrderBootStrap implements CommandLineRunner {
     private void loadCustomerData() {
         if (customerRepository.count() == 0) {
             customerRepository.save(Customer.builder()
-                    .customerName(TASTING_ROOM)
+                    .customerName(GROCERY_STORE)
                     .apiKey(UUID.randomUUID())
                     .build());
         }
