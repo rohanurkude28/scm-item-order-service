@@ -19,6 +19,7 @@ package com.spring.cloud.order.service.web.mappers;
 
 import com.spring.cloud.order.service.domain.ItemOrder;
 import com.spring.cloud.order.service.web.model.ItemOrderDto;
+import org.mapstruct.CollectionMappingStrategy;
 import org.mapstruct.Mapper;
 
 @Mapper(uses = {DateMapper.class, ItemOrderLineMapper.class})

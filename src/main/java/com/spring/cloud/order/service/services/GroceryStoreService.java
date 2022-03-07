@@ -32,7 +32,7 @@ public class GroceryStoreService {
     }
 
     @Transactional
-    @Scheduled(fixedRate = 2000) //run every 2 seconds
+    @Scheduled(fixedRate = 20000) //run every 20 seconds
     public void placeTastingRoomOrder(){
 
         List<Customer> customerList = customerRepository.findAllByCustomerNameLike(ItemOrderBootStrap.GROCERY_STORE);
@@ -46,17 +46,17 @@ public class GroceryStoreService {
 
     private void doPlaceOrder(Customer customer) {
 
-        ItemOrderLineDto ItemOrderLine = ItemOrderLineDto.builder()
+        ItemOrderLineDto itemOrderLine = ItemOrderLineDto.builder()
                 .orderQuantity(new Random().nextInt(6)) //todo externalize value to property
                 .build();
 
-        List<ItemOrderLineDto> ItemOrderLineSet = new ArrayList<>();
-        ItemOrderLineSet.add(ItemOrderLine);
+        List<ItemOrderLineDto> itemOrderLines = new ArrayList<>();
+        itemOrderLines.add(itemOrderLine);
 
         ItemOrderDto ItemOrder = ItemOrderDto.builder()
                 .customerId(customer.getId())
                 .customerRef(UUID.randomUUID().toString())
-                .ItemOrderLines(ItemOrderLineSet)
+                .itemOrderLines(itemOrderLines)
                 .build();
 
         ItemOrderDto savedOrder = ItemOrderService.placeOrder(customer.getId(), ItemOrder);

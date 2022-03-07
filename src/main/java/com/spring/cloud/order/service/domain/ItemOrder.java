@@ -42,12 +42,12 @@ public class ItemOrder extends BaseEntity {
 
     @Builder
     public ItemOrder(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, String customerRef, Customer customer,
-                     Set<ItemOrderLine> ItemOrderLines, OrderStatusEnum orderStatus,
+                     Set<ItemOrderLine> itemOrderLines, OrderStatusEnum orderStatus,
                      String orderStatusCallbackUrl) {
         super(id, version, createdDate, lastModifiedDate);
         this.customerRef = customerRef;
         this.customer = customer;
-        this.ItemOrderLines = ItemOrderLines;
+        this.itemOrderLines = itemOrderLines;
         this.orderStatus = orderStatus;
         this.orderStatusCallbackUrl = orderStatusCallbackUrl;
     }
@@ -57,9 +57,9 @@ public class ItemOrder extends BaseEntity {
     @ManyToOne
     private Customer customer;
 
-    @OneToMany(mappedBy = "ItemOrder", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "itemOrder", cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
-    private Set<ItemOrderLine> ItemOrderLines;
+    private Set<ItemOrderLine> itemOrderLines;
 
     private OrderStatusEnum orderStatus = OrderStatusEnum.NEW;
     private String orderStatusCallbackUrl;
