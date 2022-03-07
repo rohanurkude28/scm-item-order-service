@@ -30,9 +30,6 @@ import java.util.List;
 import java.util.UUID;
 
 
-/**
- * Created by jt on 2019-01-26.
- */
 public interface ItemOrderRepository  extends JpaRepository<ItemOrder, UUID> {
 
     Page<ItemOrder> findAllByCustomer(Customer customer, Pageable pageable);
