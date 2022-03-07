@@ -22,9 +22,11 @@ import com.spring.cloud.order.service.domain.Customer;
 import com.spring.cloud.order.service.domain.OrderStatusEnum;
 import com.spring.cloud.order.service.repositories.ItemOrderRepository;
 import com.spring.cloud.order.service.repositories.CustomerRepository;
+import com.spring.cloud.order.service.web.mappers.ItemOrderLineMapper;
 import com.spring.cloud.order.service.web.mappers.ItemOrderMapper;
 import com.spring.cloud.order.service.web.model.ItemOrderDto;
 import com.spring.cloud.order.service.web.model.ItemOrderPagedList;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
@@ -39,21 +41,13 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ItemOrderServiceImpl implements ItemOrderService {
 
     private final ItemOrderRepository ItemOrderRepository;
     private final CustomerRepository customerRepository;
     private final ItemOrderMapper ItemOrderMapper;
     private final ApplicationEventPublisher publisher;
-
-    public ItemOrderServiceImpl(ItemOrderRepository ItemOrderRepository,
-                                CustomerRepository customerRepository,
-                                ItemOrderMapper ItemOrderMapper, ApplicationEventPublisher publisher) {
-        this.ItemOrderRepository = ItemOrderRepository;
-        this.customerRepository = customerRepository;
-        this.ItemOrderMapper = ItemOrderMapper;
-        this.publisher = publisher;
-    }
 
     @Override
     public ItemOrderPagedList listOrders(UUID customerId, Pageable pageable) {

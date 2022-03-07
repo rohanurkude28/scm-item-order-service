@@ -32,11 +32,11 @@ import java.util.UUID;
 public class ItemOrderDto extends BaseItem {
 
     @Builder
-    public ItemOrderDto(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate, UUID customerId, List<ItemOrderLineDto> ItemOrderLines,
+    public ItemOrderDto(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate, UUID customerId, List<ItemOrderLineDto> itemOrderLines,
                         OrderStatusEnum orderStatus, String orderStatusCallbackUrl, String customerRef) {
         super(id, version, createdDate, lastModifiedDate);
         this.customerId = customerId;
-        this.ItemOrderLines = ItemOrderLines;
+        this.itemOrderLines = itemOrderLines;
         this.orderStatus = orderStatus;
         this.orderStatusCallbackUrl = orderStatusCallbackUrl;
         this.customerRef = customerRef;
@@ -44,7 +44,7 @@ public class ItemOrderDto extends BaseItem {
 
     private UUID customerId;
     private String customerRef;
-    private List<ItemOrderLineDto> ItemOrderLines;
+    private List<ItemOrderLineDto> itemOrderLines;
     private OrderStatusEnum orderStatus;
     private String orderStatusCallbackUrl;
 }

@@ -32,14 +32,14 @@ public class ItemOrderLineDto extends BaseItem {
 
     @Builder
     public ItemOrderLineDto(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate,
-                            String ItemName, UUID ItemId, Integer orderQuantity) {
+                            String itemName, UUID itemId, Integer orderQuantity) {
         super(id, version, createdDate, lastModifiedDate);
-        this.ItemName = ItemName;
-        this.ItemId = ItemId;
+        this.itemName = itemName;
+        this.itemId = itemId;
         this.orderQuantity = orderQuantity;
     }
 
-    private String ItemName;
-    private UUID ItemId;
+    private String itemName;
+    private UUID itemId;
     private Integer orderQuantity = 0;
 }
