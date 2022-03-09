@@ -35,12 +35,13 @@ public class ItemOrderLine extends BaseEntity {
     @Builder
     public ItemOrderLine(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate,
                          ItemOrder itemOrder, UUID itemId, Integer orderQuantity,
-                         Integer quantityAllocated) {
+                         Integer quantityAllocated,Long batchNo) {
         super(id, version, createdDate, lastModifiedDate);
         this.itemOrder = itemOrder;
         this.itemId = itemId;
         this.orderQuantity = orderQuantity;
         this.quantityAllocated = quantityAllocated;
+        this.batchNo=batchNo;
     }
 
     @ManyToOne
@@ -49,4 +50,5 @@ public class ItemOrderLine extends BaseEntity {
     private UUID itemId;
     private Integer orderQuantity = 0;
     private Integer quantityAllocated = 0;
+    private Long batchNo;
 }
